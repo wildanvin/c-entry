@@ -24,7 +24,7 @@ const deployCentry: DeployFunction = async function (hre: HardhatRuntimeEnvironm
   await deploy("Centry", {
     from: deployer,
     // Contract constructor arguments
-    args: [deployer, 3, "1000000000000000", "Testing"],
+    args: [deployer, 3, "1000000000000000", "Testing", 1],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.

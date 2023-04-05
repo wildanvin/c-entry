@@ -5,31 +5,52 @@ contract Centry {
 
     address payable public recipient;
     uint256 public entranceFee;
+    uint256 public dueDate;
     string public description;
     uint8 public immutable maxParticipants;
-    uint8 public pCounter;
+    uint8 public participantsCounter;
 
     mapping(address => bool) public isParticipant;
+    mapping(address => uint256) public balances;
 
-    event Newparticipant(address _participant);
+    event NewParticipant(address _participant);
 
-    constructor(address payable _recipient, uint8 _maxParticipants, uint256 _entranceFee, string memory _description){
+    modifier notFull {
+        require (participantsCounter < maxParticipants, "c-entry is full");
+        _;
+    }
+
+    modifier onlyParticipant {
+        require (isParticipant[msg.sender], "Only participants");
+        _;
+    }
+
+    constructor(address payable _recipient, uint8 _maxParticipants, uint256 _entranceFee, string memory _description, uint256 _numOfDays){
         recipient = _recipient;
         maxParticipants = _maxParticipants;
         entranceFee = _entranceFee;
         description = _description;
+        dueDate = block.timestamp + (_numOfDays * 1 days);
     }
 
-    function enterCentry() public payable {
+    function enterCentry() notFull public payable {
         require(msg.value == entranceFee, "Not enough ETH");
         isParticipant[msg.sender] = true;
-        pCounter += 1;
-        emit Newparticipant(msg.sender);
+        balances[msg.sender] = msg.value;
+        participantsCounter += 1;
+        emit NewParticipant(msg.sender);
         
-        if (pCounter == maxParticipants){
+        if (participantsCounter == maxParticipants){
             _payRecipient();
-        }
-        
+        }   
+    }
+
+    function claimEntranceFee () onlyParticipant public {
+        require(block.timestamp >= dueDate, "Not time yet");
+        uint256 amount = balances[msg.sender];
+        balances[msg.sender] = 0;
+        (bool sent,) = msg.sender.call{value: amount}("");
+        require(sent, "Failed to send ETH");
     }
 
     function _payRecipient() internal {
