@@ -14,7 +14,7 @@ contract FactoryCentry {
         uint8 _maxParticipants, 
         uint256 _entranceFee, 
         string memory _description, 
-        uint256 _numOfDays
+        uint8 _numOfDays
         ) 
         public 
     {

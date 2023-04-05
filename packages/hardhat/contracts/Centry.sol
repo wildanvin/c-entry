@@ -25,7 +25,7 @@ contract Centry {
         _;
     }
 
-    constructor(address payable _recipient, uint8 _maxParticipants, uint256 _entranceFee, string memory _description, uint256 _numOfDays){
+    constructor(address payable _recipient, uint8 _maxParticipants, uint256 _entranceFee, string memory _description, uint8 _numOfDays){
         recipient = _recipient;
         maxParticipants = _maxParticipants;
         entranceFee = _entranceFee;
