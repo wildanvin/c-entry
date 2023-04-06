@@ -20,7 +20,7 @@ const Browse: NextPage = () => {
       </Head>
 
       <div className="grid flex-grow">
-        <div>{centrysList}</div>
+        <div>{centrysList?.reverse()}</div>
       </div>
     </>
   );

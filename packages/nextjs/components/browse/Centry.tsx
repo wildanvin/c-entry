@@ -13,6 +13,36 @@ export const Centry: React.FC<CentryProps> = ({ address }) => {
     address: address,
   });
 
+  const { data: recipient } = useCustomContractRead({
+    contractName: "Centry",
+    functionName: "recipient",
+    address: address,
+  });
+
+  const { data: entranceFee } = useCustomContractRead({
+    contractName: "Centry",
+    functionName: "entranceFee",
+    address: address,
+  });
+
+  const { data: maxParticipants } = useCustomContractRead({
+    contractName: "Centry",
+    functionName: "maxParticipants",
+    address: address,
+  });
+
+  const { data: participantsCounter } = useCustomContractRead({
+    contractName: "Centry",
+    functionName: "participantsCounter",
+    address: address,
+  });
+
+  const { data: dueDate } = useCustomContractRead({
+    contractName: "Centry",
+    functionName: "dueDate",
+    address: address,
+  });
+
   return (
     <div className="flex bg-base-300 relative pb-10">
       <div className="flex flex-col w-full mx-5 sm:mx-8 2xl:mx-20">
@@ -21,10 +51,12 @@ export const Centry: React.FC<CentryProps> = ({ address }) => {
 
           <div className="grid grid-cols-2 gap-4 bg-gray-100 p-4 rounded-lg">
             <div>
-              <div>Recipient:</div>
-              <div>Participants: 2/3</div>
-              <div>Fee: 0.1 ETH</div>
-              {/* <div>hi: {description3 as ReactNode}</div> */}
+              <div>Recipient: {recipient}</div>
+              <div>
+                Participants: {participantsCounter}/{maxParticipants}
+              </div>
+              <div>Fee: {Number(entranceFee)} ETH</div>
+              <div>Date: {Number(dueDate)} </div>
             </div>
 
             <div className="flex rounded-full border border-primary p-1 flex-shrink-0">
