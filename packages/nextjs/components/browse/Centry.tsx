@@ -3,13 +3,14 @@ import { useCustomContractRead } from "~~/hooks/scaffold-eth";
 
 interface CentryProps {
   key: string;
+  address: string;
 }
 
-export const Centry: React.FC<CentryProps> = ({ key }) => {
+export const Centry: React.FC<CentryProps> = ({ address }) => {
   const { data: description } = useCustomContractRead({
     contractName: "Centry",
     functionName: "description",
-    address: key,
+    address: address,
   });
 
   return (
