@@ -6,7 +6,7 @@ const Create: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Create centry</title>
+        <title>Create c-entry</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree&display=swap" rel="stylesheet" />
       </Head>

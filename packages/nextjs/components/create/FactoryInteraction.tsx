@@ -4,8 +4,6 @@ import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
 import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
 export const FactoryInteraction = () => {
-  //const [newGreeting, setNewGreeting] = useState("");
-
   const [recipient, setRecipient] = useState("");
   const [maxParticipants, setMaxParticipants] = useState(2);
   const [entranceFee, setEntranceFee] = useState(utils.parseEther("0.001"));
@@ -15,7 +13,7 @@ export const FactoryInteraction = () => {
   const { writeAsync, isLoading } = useScaffoldContractWrite({
     contractName: "FactoryCentry",
     functionName: "createCentry",
-    //args: ["0x46Fbc4BCE7643cBceeccE9Fea79531b6c7f67E46", 3, utils.parseEther("0.001"), newGreeting, 1],
+
     args: [recipient, maxParticipants, entranceFee, description, numOfDays],
 
     // value: "0.01",
