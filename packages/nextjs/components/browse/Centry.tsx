@@ -5,7 +5,7 @@ export const Centry = () => {
   const { data: description } = useCustomContractRead({
     contractName: "Centry",
     functionName: "description",
-    address: "0xeC4cFde48EAdca2bC63E94BB437BbeAcE1371bF3",
+    address: "0x56639dB16Ac50A89228026e42a316B30179A5376",
   });
 
   return (

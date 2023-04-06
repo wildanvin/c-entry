@@ -1,8 +1,18 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import { Centry } from "~~/components/browse/Centry";
+import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
 
 const Browse: NextPage = () => {
+  const { data: centrysArray } = useScaffoldContractRead({
+    contractName: "FactoryCentry",
+    functionName: "getCentrysArray",
+  });
+
+  console.log(`The array is: ${centrysArray}`);
+
+  const elementList = centrysArray?.map(id => <div key={id}>Element {id}</div>);
+
   return (
     <>
       <Head>
@@ -12,6 +22,7 @@ const Browse: NextPage = () => {
       </Head>
 
       <div className="grid flex-grow">
+        <div>{elementList}</div>
         <Centry />
         <Centry />
       </div>

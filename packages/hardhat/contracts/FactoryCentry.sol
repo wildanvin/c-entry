@@ -24,4 +24,8 @@ contract FactoryCentry {
         emit CentryCreated(centry);
     }
 
+    function getCentrysArray() public view returns (Centry[] memory) {
+        return centrys;
+    }
+
 }
