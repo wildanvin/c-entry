@@ -10,10 +10,10 @@ const Create: NextPage = () => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree&display=swap" rel="stylesheet" />
       </Head>
-      <FactoryInteraction />
 
-      <p>Hello</p>
-      <p>I am creating!!</p>
+      <div className="grid flex-grow">
+        <FactoryInteraction />
+      </div>
     </>
   );
 };
