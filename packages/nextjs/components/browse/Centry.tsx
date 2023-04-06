@@ -1,11 +1,15 @@
-//import { ReactNode } from "react";
+import React from "react";
 import { useCustomContractRead } from "~~/hooks/scaffold-eth";
 
-export const Centry = () => {
+interface CentryProps {
+  key: string;
+}
+
+export const Centry: React.FC<CentryProps> = ({ key }) => {
   const { data: description } = useCustomContractRead({
     contractName: "Centry",
     functionName: "description",
-    address: "0x56639dB16Ac50A89228026e42a316B30179A5376",
+    address: key,
   });
 
   return (

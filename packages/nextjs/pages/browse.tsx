@@ -9,9 +9,7 @@ const Browse: NextPage = () => {
     functionName: "getCentrysArray",
   });
 
-  console.log(`The array is: ${centrysArray}`);
-
-  const elementList = centrysArray?.map(id => <div key={id}>Element {id}</div>);
+  const centrysList = centrysArray?.map(centryAddress => <Centry key={centryAddress} />);
 
   return (
     <>
@@ -22,9 +20,7 @@ const Browse: NextPage = () => {
       </Head>
 
       <div className="grid flex-grow">
-        <div>{elementList}</div>
-        <Centry />
-        <Centry />
+        <div>{centrysList}</div>
       </div>
     </>
   );
