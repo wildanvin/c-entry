@@ -1,10 +1,13 @@
-import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
+//import { ReactNode } from "react";
+import { useCustomContractRead } from "~~/hooks/scaffold-eth";
 
 export const Centry = () => {
-  const { data: description } = useScaffoldContractRead({
+  const { data: description } = useCustomContractRead({
     contractName: "Centry",
     functionName: "description",
+    address: "0xeC4cFde48EAdca2bC63E94BB437BbeAcE1371bF3",
   });
+
   return (
     <div className="flex bg-base-300 relative pb-10">
       <div className="flex flex-col w-full mx-5 sm:mx-8 2xl:mx-20">
@@ -16,6 +19,7 @@ export const Centry = () => {
               <div>Recipient:</div>
               <div>Participants: 2/3</div>
               <div>Fee: 0.1 ETH</div>
+              {/* <div>hi: {description3 as ReactNode}</div> */}
             </div>
 
             <div className="flex rounded-full border border-primary p-1 flex-shrink-0">
