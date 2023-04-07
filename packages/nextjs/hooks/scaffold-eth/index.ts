@@ -11,3 +11,4 @@ export * from "./useScaffoldContractWrite";
 export * from "./useScaffoldEventSubscriber";
 export * from "./useTransactor";
 export * from "./useCustomContractRead";
+export * from "./useCustomContractWrite";

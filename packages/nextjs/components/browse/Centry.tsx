@@ -1,5 +1,7 @@
 import React from "react";
-import { useCustomContractRead } from "~~/hooks/scaffold-eth";
+import { utils } from "ethers";
+import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
+import { useCustomContractRead, useCustomContractWrite } from "~~/hooks/scaffold-eth";
 
 interface CentryProps {
   key: string;
@@ -43,6 +45,13 @@ export const Centry: React.FC<CentryProps> = ({ address }) => {
     address: address,
   });
 
+  const { writeAsync, isLoading } = useCustomContractWrite({
+    contractName: "Centry",
+    functionName: "enterCentry",
+    address: address,
+    value: entranceFee ? utils.formatEther(entranceFee) : "0",
+  });
+
   return (
     <div className="flex bg-base-300 relative pb-10">
       <div className="flex flex-col w-full mx-5 sm:mx-8 2xl:mx-20">
@@ -55,28 +64,22 @@ export const Centry: React.FC<CentryProps> = ({ address }) => {
               <div>
                 Participants: {participantsCounter}/{maxParticipants}
               </div>
-              <div>Fee: {Number(entranceFee)} ETH</div>
+              <div>Fee: {entranceFee ? utils.formatEther(entranceFee) : "0"} ETH</div>
               <div>Date: {Number(dueDate)} </div>
             </div>
 
-            <div className="flex rounded-full border border-primary p-1 flex-shrink-0">
-              <button> Enter </button>
-
-              {/* <div className="flex rounded-full border-2 border-primary p-1">
-                <button
-                  className={`btn btn-primary rounded-full capitalize font-normal font-white w-24 flex items-center gap-1 hover:gap-2 transition-all tracking-widest ${
-                    isLoading ? "loading" : ""
-                  }`}
-                  onClick={writeAsync}
-                >
-                  {!isLoading && (
-                    <>
-                      Send <ArrowSmallRightIcon className="w-3 h-3 mt-0.5" />
-                    </>
-                  )}
-                </button>
-              </div> */}
-            </div>
+            <button
+              className={`btn btn-primary rounded-full capitalize font-normal font-white w-24 flex items-center gap-1 hover:gap-2 transition-all tracking-widest ${
+                isLoading ? "loading" : ""
+              }`}
+              onClick={writeAsync}
+            >
+              {!isLoading && (
+                <>
+                  Enter <ArrowSmallRightIcon className="w-3 h-3 mt-0.5" />
+                </>
+              )}
+            </button>
           </div>
         </div>
       </div>
