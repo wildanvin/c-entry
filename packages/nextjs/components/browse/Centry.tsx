@@ -17,6 +17,12 @@ export const Centry: React.FC<CentryProps> = ({ address }) => {
     address: address,
   });
 
+  const { data: link } = useCustomContractRead({
+    contractName: "Centry",
+    functionName: "link",
+    address: address,
+  });
+
   const { data: recipient } = useCustomContractRead({
     contractName: "Centry",
     functionName: "recipient",
@@ -61,7 +67,14 @@ export const Centry: React.FC<CentryProps> = ({ address }) => {
       <div className="flex flex-col w-full mx-5 sm:mx-8 2xl:mx-20">
         <div className="flex flex-col mt-6 px-7 py-8 bg-base-200 opacity-80 rounded-2xl shadow-lg border-2 border-primary items-center">
           <div className="flex items-center justify-between py-4 border-b border-gray-200 w-4/5">
-            <span className="text-2xl sm:text-3xl text-black">{description}</span>
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-2xl sm:text-3xl text-black hover:text-blue-500"
+            >
+              {description}
+            </a>
             <div className="flex items-center">
               <div className="mr-4">
                 <Balance address={address} />
@@ -72,7 +85,7 @@ export const Centry: React.FC<CentryProps> = ({ address }) => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 bg-white p-4 rounded-lg shadow-lg ">
+          <div className="grid grid-cols-2 gap-4 bg-white p-4 rounded-lg shadow-lg my-4">
             <div>
               <div className="font-medium text-gray-500 mb-2">Recipient:</div>
               <Address address={recipient} />
@@ -85,7 +98,7 @@ export const Centry: React.FC<CentryProps> = ({ address }) => {
               <div className="text-gray-500 font-sm">
                 {" "}
                 <div>
-                  If it fails, claim back after{" "}
+                  If no quorum, claim back after{" "}
                   {date.toLocaleDateString("en-US", {
                     year: "numeric",
                     month: "long",

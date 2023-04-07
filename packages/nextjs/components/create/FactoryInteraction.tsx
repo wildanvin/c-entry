@@ -9,12 +9,13 @@ export const FactoryInteraction = () => {
   const [entranceFee, setEntranceFee] = useState(utils.parseEther("0.001"));
   const [description, setDescription] = useState("");
   const [numOfDays, setNumOfDays] = useState(2);
+  const [link, setLink] = useState("");
 
   const { writeAsync, isLoading } = useScaffoldContractWrite({
     contractName: "FactoryCentry",
     functionName: "createCentry",
 
-    args: [recipient, maxParticipants, entranceFee, description, numOfDays],
+    args: [recipient, maxParticipants, entranceFee, description, numOfDays, link],
 
     // value: "0.01",
   });
@@ -49,6 +50,12 @@ export const FactoryInteraction = () => {
               placeholder="Brief description of this c-entry"
               className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
               onChange={e => setDescription(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Link"
+              className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
+              onChange={e => setLink(e.target.value)}
             />
             <input
               type="text"
