@@ -7,6 +7,7 @@ contract Centry {
     uint256 public entranceFee;
     uint256 public dueDate;
     string public description;
+    string public link;
     uint8 public immutable maxParticipants;
     uint8 public participantsCounter;
 
@@ -25,11 +26,12 @@ contract Centry {
         _;
     }
 
-    constructor(address payable _recipient, uint8 _maxParticipants, uint256 _entranceFee, string memory _description, uint8 _numOfDays){
+    constructor(address payable _recipient, uint8 _maxParticipants, uint256 _entranceFee, string memory _description, uint8 _numOfDays, string memory _link){
         recipient = _recipient;
         maxParticipants = _maxParticipants;
         entranceFee = _entranceFee;
         description = _description;
+        link = _link;
         dueDate = block.timestamp + (_numOfDays * 1 days);
     }
 

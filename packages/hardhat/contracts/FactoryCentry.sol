@@ -14,11 +14,13 @@ contract FactoryCentry {
         uint8 _maxParticipants, 
         uint256 _entranceFee, 
         string memory _description, 
-        uint8 _numOfDays
+        uint8 _numOfDays,
+        string memory _link 
+
         ) 
         public 
     {
-        Centry centry = (new Centry)(_recipient, _maxParticipants, _entranceFee, _description, _numOfDays);
+        Centry centry = (new Centry)(_recipient, _maxParticipants, _entranceFee, _description, _numOfDays, _link);
 
         centrys.push(centry);
         emit CentryCreated(centry);
