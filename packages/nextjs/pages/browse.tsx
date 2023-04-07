@@ -9,7 +9,10 @@ const Browse: NextPage = () => {
     functionName: "getCentrysArray",
   });
 
-  const centrysList = centrysArray?.map(centryAddress => <Centry key={centryAddress} address={centryAddress} />);
+  //const centrysList = centrysArray?.map(centryAddress => <Centry key={centryAddress} address={centryAddress} />);
+  const centrysList = centrysArray?.map((centryAddress: string) => (
+    <Centry key={centryAddress} address={centryAddress} />
+  ));
 
   return (
     <>
