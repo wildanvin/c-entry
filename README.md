@@ -4,7 +4,7 @@ c-entry is short for Coordinated Entry, and it's a smart solution for coordinati
 
 c-entry is a decentralized application (dapp) that enables users to create a smart contract (a c-entry) by specifying the address of the beneficiary as the recipient and inviting like-minded people to participate in the event or course. To join the c-entry, participants must pay the discounted amount. Once the minimum number of participants is reached, c-entry automatically transfers the funds to the recipient, and everyone in the c-entry group gains access to the event or course at a discounted price.
 
-This system benefits everyone involved: participants save money, the event or course manager receives payment, and people who share similar interests have the opportunity to meet and make new friends. It's a win-win situation for all 😊
+This system benefits everyone involved: participants save money, the event or course manager receives payment, and people who share similar interests have the opportunity to meet and make new friends. It's a win-win situation for all! 😊
 
 # Live demo
 
