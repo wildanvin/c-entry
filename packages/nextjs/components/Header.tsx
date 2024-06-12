@@ -51,13 +51,13 @@ export const Header = () => {
       <li className="hidden">
         <NavLink href="/">Home</NavLink>
       </li>
-      <li className="hidden">
+      <li>
         <NavLink href="/debug">
           <BugAntIcon className="h-4 w-4" />
           Debug Contracts
         </NavLink>
       </li>
-      <li className="hidden">
+      <li>
         <NavLink href="/example-ui">
           <SparklesIcon className="h-4 w-4" />
           Example UI
